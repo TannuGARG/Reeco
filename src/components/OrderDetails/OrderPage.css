@@ -1,0 +1,149 @@
+.order-header {
+  background-color: darkgreen !important;
+  width: calc(100% - 40px);
+  height: 40px;
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  flex-direction: row;
+}
+.navbar-container {
+  height: 100%;
+  width: 100%;
+}
+
+.order-logo {
+  font-weight: bold !important;
+  color: white;
+}
+
+.navbar-container-links {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  padding: 20px;
+}
+.nav-item-link {
+  color: rgb(219, 212, 212);
+}
+.order-id-container {
+  height: 80px;
+  width: calc(100% - 40px);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border-radius: 8px;
+  padding: 10px 20px;
+
+  box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.2);
+}
+.order-id-container-first {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  color: rgb(72, 69, 69);
+}
+.order-id-container-second {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  align-items: center;
+  color: rgb(18, 17, 17);
+}
+.order-id-page {
+  font-weight: bold !important;
+}
+.header-button {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+.header-button .MuiButton-root:first-child {
+  border: 2px solid darkgreen;
+  color: darkgreen;
+
+  border-radius: 32px;
+  font-weight: 600;
+}
+.header-button .MuiButton-root:nth-child(2) {
+  background-color: darkgreen;
+  color: white;
+  border-radius: 32px;
+  font-weight: 600;
+}
+.order-container {
+  padding: 20px 20px;
+  display: flex;
+  height: calc(100% - 180px);
+  /* overflow-y: auto;
+  overflow-x: hidden; */
+
+  flex-direction: column;
+  gap: 20px;
+}
+.order-supplier-div {
+  border: 1px solid rgb(222, 216, 216);
+  border-radius: 8px;
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  flex-direction: row;
+}
+.order-supplier-categories {
+  padding: 10px;
+  width: calc(20% - 20px);
+}
+.category-key {
+  font-weight: 600 !important;
+  color: rgb(192, 190, 190);
+}
+.category-value {
+  font-weight: 600 !important;
+  color: rgb(20, 20, 20);
+}
+.order-supplier-div .MuiDivider-root {
+  margin: 10px 10px;
+}
+.order-item-div {
+  border: 1px solid rgb(222, 216, 216);
+  border-radius: 8px;
+  width: 100%;
+  height: auto;
+  display: flex;
+
+  flex-direction: row;
+}
+.product-image-size {
+  width: 40px;
+  height: 40px;
+  aspect-ratio: 20/7;
+}
+.order-item-div .MuiSvgIcon-root {
+  fill: grey;
+}
+.order-item-div .MuiButton-root {
+  color: grey;
+}
+.order-status {
+  width: auto;
+  height: 30px;
+  border-radius: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+.Approved {
+  background-color: #3bbd5c;
+}
+.Missing {
+  background-color: orangered;
+}
+.Missing-Urgent {
+  background-color: red;
+}
