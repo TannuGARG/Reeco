@@ -18,12 +18,12 @@ const AllOrderPage = () => {
               <Typography variant="h5">Order 1</Typography>
             </CardContent>
           </Card>
-          <Card className="order-card" onClick={() => navigate("32459ALPZ")}>
+          <Card className="order-card" onClick={() => navigate("32459ALWA")}>
             <CardContent>
               <Typography variant="h5">Order 2</Typography>
             </CardContent>
           </Card>
-          <Card className="order-card" onClick={() => navigate("32458ALPZ")}>
+          <Card className="order-card" onClick={() => navigate("32458ALNK")}>
             <CardContent>
               <Typography variant="h5">Order 3</Typography>
             </CardContent>
