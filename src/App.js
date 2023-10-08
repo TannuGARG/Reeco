@@ -4,6 +4,7 @@ import OrderPage from './components/OrderDetails/OrderPage';
 import Store from './components/Store';
 import Analytics from './components/Analytics';
 import Nofound from './components/NoFound';
+import "./App.css"
 
 function App() {
   return (

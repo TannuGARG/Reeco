@@ -12,11 +12,34 @@ import CheckIcon from "@mui/icons-material/Check";
 import CloseIcon from "@mui/icons-material/Close";
 import orderImages from "../assets";
 import MissingProductPopup from "./MissingPopup";
+import EditOrderPopup from "./EditOrder";
 
 const OrderContainer = () => {
   const [openMissingPopUp, setOpenMissingPopUp] = useState(false);
+  const [openEditPopUp, setOpenEditPopUp] = useState(false);
   const [activeOrderId, setActiveOrderId] = useState("");
   const [orderData, setOrderData] = useState(jsonData ?? []);
+  const [orderToBeEdit, setOrderToBeEdit] = useState(null);
+
+  const handleCloseMissingPopUp = ()=>{
+    setOpenMissingPopUp(false);
+    setActiveOrderId("");
+  }
+
+  const handleCloseEditPopUp = ()=>{
+    setOpenEditPopUp(false);
+    setActiveOrderId("");
+    setOrderToBeEdit(null);
+  }
+
+  const handleChangeOrderEntity = (entity,value)=>{
+    setOrderToBeEdit({
+      ...orderToBeEdit,
+      [entity]: Number(value),
+      status: "Updated",
+    });
+
+  }
 
   const updateOrderStatus = (id, action) => {
     setOrderData(
@@ -28,7 +51,27 @@ const OrderContainer = () => {
         } else return order;
       })
     );
-    setOpenMissingPopUp(false);
+    handleCloseMissingPopUp()
+    
+  };
+
+  
+
+  const openEditOrderDetailModal = (id) => {
+    setOpenEditPopUp(true);
+    setActiveOrderId(id);
+    setOrderToBeEdit(orderData?.find((item) => item.id === id));
+  };
+
+  const saveEditDetail = (data) => {
+    setOrderData(
+      orderData.map((order) => {
+        if (order.id === data.id) {
+          return data;
+        } else return order;
+      })
+    );
+    handleCloseEditPopUp()
   };
   return (
     <>
@@ -85,7 +128,7 @@ const OrderContainer = () => {
           </TableHead>
           <TableBody>
             {orderData &&
-              orderData.map((order, idx) => (
+              orderData.map((order) => (
                 <TableRow key={order?.id}>
                   <TableCell component="th" scope="row">
                     <img
@@ -110,7 +153,7 @@ const OrderContainer = () => {
                   </TableCell>
                   <TableCell align="left">
                     <Typography variant="inherit">
-                      ${parseInt(order?.quantity) * parseInt(order?.price)}
+                      ${order?.quantity * order?.price}
                     </Typography>
                   </TableCell>
                   <TableCell align="left">
@@ -120,24 +163,46 @@ const OrderContainer = () => {
                     </div>
                   </TableCell>
                   <TableCell align="left">
-                    <IconButton>
-                      <CheckIcon
-                        onClick={() => updateOrderStatus(order.id, "Approved")}
-                      />
-                    </IconButton>
+                    <div
+                      className={
+                        order?.status === "Approved" ||
+                        order?.status === "Updated"
+                          ? `${order?.status}-icon`
+                          : ""
+                      }
+                    >
+                      <IconButton>
+                        <CheckIcon
+                          onClick={() =>
+                            updateOrderStatus(order.id, "Approved")
+                          }
+                        />
+                      </IconButton>
+                    </div>
                   </TableCell>
                   <TableCell align="left">
-                    <IconButton>
-                      <CloseIcon
-                        onClick={() => {
-                          setOpenMissingPopUp(true);
-                          setActiveOrderId(order.id);
-                        }}
-                      />
-                    </IconButton>
+                    <div
+                      className={
+                        order?.status === "Missing" ||
+                        order?.status === "Missing-Urgent"
+                          ? `${order?.status}-icon`
+                          : ""
+                      }
+                    >
+                      <IconButton>
+                        <CloseIcon
+                          onClick={() => {
+                            setOpenMissingPopUp(true);
+                            setActiveOrderId(order.id);
+                          }}
+                        />
+                      </IconButton>
+                    </div>
                   </TableCell>
                   <TableCell align="left">
-                    <Button>Exit</Button>
+                    <Button onClick={() => openEditOrderDetailModal(order.id)}>
+                      Exit
+                    </Button>
                   </TableCell>
                 </TableRow>
               ))}
@@ -147,10 +212,18 @@ const OrderContainer = () => {
       {openMissingPopUp && (
         <MissingProductPopup
           openMissingPopUp={openMissingPopUp}
-          setOpenMissingPopUp={setOpenMissingPopUp}
-          orderId={activeOrderId}
-          setActiveOrderId={setActiveOrderId}
+         orderId={activeOrderId}
+          handleCloseMissingPopUp = {handleCloseMissingPopUp}
           updateOrderStatus={updateOrderStatus}
+        />
+      )}
+      {openEditPopUp && (
+        <EditOrderPopup
+          openEditPopUp={openEditPopUp}
+          orderToBeEdit={orderToBeEdit}
+          saveEditDetail={saveEditDetail}
+          handleCloseEditPopUp = {handleCloseEditPopUp}
+          handleChangeOrderEntity = {handleChangeOrderEntity}
         />
       )}
     </>

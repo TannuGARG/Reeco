@@ -121,10 +121,7 @@
 .product-image-size {
   width: 40px;
   height: 40px;
-  aspect-ratio: 20/7;
-}
-.order-item-div .MuiSvgIcon-root {
-  fill: grey;
+  aspect-ratio: 16/9;
 }
 .order-item-div .MuiButton-root {
   color: grey;
@@ -138,12 +135,26 @@
   justify-content: center;
   color: white;
 }
-.Approved {
+.Approved,
+.Updated {
   background-color: #3bbd5c;
 }
 .Missing {
-  background-color: orangered;
+  background-color: rgb(237, 108, 15);
 }
 .Missing-Urgent {
   background-color: red;
+}
+.dialog-active-button .MuiButton-root {
+  color: black;
+}
+.Approved-icon .MuiSvgIcon-root,
+.Updated-icon .MuiSvgIcon-root {
+  fill: #3bbd5c;
+}
+.Missing-icon .MuiSvgIcon-root {
+  fill: rgb(237, 108, 15);
+}
+.Missing-Urgent-icon .MuiSvgIcon-root {
+  fill: red;
 }

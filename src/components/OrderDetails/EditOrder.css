@@ -1,0 +1,65 @@
+.order-box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+}
+.product-image-editpage {
+  width: 100px;
+  height: 100px;
+  aspect-ratio: 16/9;
+}
+.order-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.order-detail-input {
+  display: flex;
+
+  flex-direction: row;
+  align-items: center;
+}
+.order-detail-input > .MuiTextField-root {
+  margin-left: 40px;
+}
+.order-detail-input .MuiTypography-root {
+  width: 91px;
+  font-size: 20px;
+}
+.quantity-icons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+.quantity-icons .MuiIconButton-root {
+  background-color: palegreen;
+  color: white;
+  width: 30px;
+  height: 30px;
+}
+.dialog-active-button .MuiButton-root:first-child {
+  border: 2px solid darkgreen;
+  color: darkgreen;
+
+  border-radius: 32px;
+  font-weight: 600;
+}
+.dialog-active-button .MuiButton-root:nth-child(2) {
+  background-color: darkgreen;
+  color: white;
+  border-radius: 32px;
+  font-weight: 600;
+}
+.edit-page-header {
+  display: flex;
+  flex-direction: row;
+  padding: 20px;
+  padding-bottom: 0px;
+  align-items: flex-start;
+  gap: 30px;
+}
+.edit-page-header >.MuiTypography-root{
+  font-weight: 700;
+}
