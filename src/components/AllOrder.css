@@ -1,0 +1,14 @@
+.order-card {
+  height: 200px;
+  width: 300px;
+  cursor: pointer;
+  border: 1px solid rgb(177, 174, 174);
+  border-radius: 8px;
+  text-align: center;
+}
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  padding: 30px;
+}

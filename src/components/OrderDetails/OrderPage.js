@@ -1,61 +1,31 @@
 import * as React from "react";
-import Box from "@mui/material/Box";
-import { Divider } from "@mui/material";
+import { Divider, IconButton } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
-import { NavLink } from "react-router-dom";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import "./OrderPage.css";
 import OrderContainer from "./OrderContainer";
-
-const styleNavbar = ({ isActive }) => {
-  return {
-    fontWeight: isActive ? "bold" : "normal",
-    backgroundColor: isActive ? "white" : "",
-    textDecoration: "none",
-  };
-};
+import { Link, useParams, useNavigate } from "react-router-dom";
 
 const OrderPage = () => {
+  const params = useParams();
+  const navigate = useNavigate();
+  let orderId = params?.orderId;
   return (
     <div className="navbar-container">
-      <div className="order-header">
-        <Typography variant="h5" className="order-logo">
-          LOGO
-        </Typography>
-        <Box className="navbar-container-links">
-          <Box className="">
-            <NavLink style={styleNavbar} to="store">
-              <Typography variant="h6" className="nav-item-link">
-                Store
-              </Typography>
-            </NavLink>
-          </Box>
-          <Box>
-            <NavLink style={styleNavbar} to="/">
-              <Typography variant="h6" className="nav-item-link">
-                Orders
-              </Typography>
-            </NavLink>
-          </Box>
-          <Box>
-            <NavLink style={styleNavbar} to="analytics">
-              <Typography variant="h6" className="nav-item-link">
-                Analytics
-              </Typography>
-            </NavLink>
-          </Box>
-        </Box>
-      </div>
-
       <div className="order-id-container">
         <div className="order-id-container-first">
-          <Typography>Orders</Typography>
-          <ChevronRightIcon />
-          <Typography>Order 32457ALPZ</Typography>
+          <Typography className="go-back-to-order" onClick={() => navigate(-1)}>
+            Orders
+          </Typography>
+          <IconButton onClick={() => navigate(-1)}>
+            {" "}
+            <ChevronRightIcon />
+          </IconButton>
+          <Typography>Order {orderId}</Typography>
         </div>
         <div className="order-id-container-second">
-          <Typography className="order-id-page">Order 32457ALPZ </Typography>
+          <Typography className="order-id-page">Order {orderId} </Typography>
           <div className="header-button">
             <Button variant="outlined">
               <Typography>Back</Typography>
